@@ -640,11 +640,33 @@
     border-radius: 4px;
     margin-bottom: 6px;
     font-size: 13px;
+    transition: all 0.2s ease;
+  }
+
+  .uploaded-file:hover {
+    border-color: var(--color-success);
+    background: linear-gradient(to right, rgba(61, 107, 79, 0.04), var(--color-paper));
+  }
+
+  .uploaded-file.uploading {
+    opacity: 0.7;
+    border-style: dashed;
   }
 
   .uploaded-file-icon {
     color: var(--color-success);
     flex-shrink: 0;
+    font-weight: bold;
+  }
+
+  .uploaded-file.uploading .uploaded-file-icon {
+    color: var(--color-warning);
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
   }
 
   .uploaded-file-name {
@@ -653,6 +675,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    transition: color 0.2s ease;
+  }
+
+  .uploaded-file-name[onclick]:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
   }
 
   .uploaded-file-size {
@@ -967,7 +995,7 @@
     <span class="section-num">04 — Document Checklist</span>
     <h2 class="section-title">文件清单及核对表</h2>
     <p class="section-intro">
-      以下为续签所需的全部文件清单，请逐项核对。可勾选已准备完毕的项目，并上传扫描件作为留存备份。本页面所有数据仅保存于浏览器本地，不会上传至任何服务器，刷新页面后勾选状态将自动保留。
+      以下为续签所需的全部文件清单，请逐项核对。可勾选已准备完毕的项目，并上传文件作为留存备份。所有勾选状态及上传文件均保存于<strong>当前浏览器本地</strong>，不会上传至任何服务器，下次在同一设备的同一浏览器中打开本页面时将自动恢复。如需在其他设备查阅，可使用页面下方的"导出材料清单"功能。
     </p>
 
     <div class="checklist-intro">
@@ -1057,6 +1085,7 @@
       </div>
       <div class="actions">
         <button class="btn btn-primary" onclick="exportChecklist()">导出材料清单</button>
+        <button class="btn btn-secondary" onclick="showStorageInfo()">查看存储情况</button>
         <button class="btn btn-secondary" onclick="resetAll()">重置全部状态</button>
       </div>
     </div>
@@ -1379,7 +1408,7 @@ function createDocItem(doc) {
         <div class="upload-zone" data-doc-id="${doc.id}">
           <div class="upload-zone-icon">⬆</div>
           <div class="upload-zone-text">点击或拖拽文件至此处上传</div>
-          <div class="upload-zone-hint">PDF · JPG · PNG · 单个文件不超过 20MB</div>
+          <div class="upload-zone-hint">PDF · JPG · PNG · 单个文件不超过 20MB · 文件保存在本地浏览器</div>
           <input type="file" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" data-doc-id="${doc.id}">
         </div>
         <div class="uploaded-files" data-files-for="${doc.id}"></div>
@@ -1442,24 +1471,144 @@ function createDocItem(doc) {
 // 状态管理
 let checkedState = {};
 let uploadedFiles = {};
+let db = null;
 
-// 从 localStorage 恢复
+// === IndexedDB 初始化（用于存储真实文件内容）===
+function initDB() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open('VisaDocsDB', 1);
+
+    request.onerror = () => reject(request.error);
+
+    request.onsuccess = (e) => {
+      db = e.target.result;
+      resolve(db);
+    };
+
+    request.onupgradeneeded = (e) => {
+      const database = e.target.result;
+      if (!database.objectStoreNames.contains('files')) {
+        const store = database.createObjectStore('files', { keyPath: 'id', autoIncrement: true });
+        store.createIndex('docId', 'docId', { unique: false });
+      }
+    };
+  });
+}
+
+// 将文件保存到 IndexedDB
+function saveFileToDB(docId, file) {
+  return new Promise((resolve, reject) => {
+    if (!db) return reject(new Error('数据库未初始化'));
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const transaction = db.transaction(['files'], 'readwrite');
+      const store = transaction.objectStore('files');
+      const record = {
+        docId: docId,
+        name: file.name,
+        size: file.size,
+        type: file.type,
+        data: reader.result,  // ArrayBuffer 数据
+        timestamp: Date.now()
+      };
+      const request = store.add(record);
+      request.onsuccess = () => resolve(request.result);  // 返回新增记录的 id
+      request.onerror = () => reject(request.error);
+    };
+    reader.onerror = () => reject(reader.error);
+    reader.readAsArrayBuffer(file);
+  });
+}
+
+// 从 IndexedDB 加载所有文件
+function loadFilesFromDB() {
+  return new Promise((resolve, reject) => {
+    if (!db) return resolve({});
+
+    const transaction = db.transaction(['files'], 'readonly');
+    const store = transaction.objectStore('files');
+    const request = store.getAll();
+
+    request.onsuccess = () => {
+      const filesByDoc = {};
+      request.result.forEach(record => {
+        if (!filesByDoc[record.docId]) filesByDoc[record.docId] = [];
+        filesByDoc[record.docId].push({
+          dbId: record.id,
+          name: record.name,
+          size: record.size,
+          type: record.type,
+          data: record.data,
+          timestamp: record.timestamp
+        });
+      });
+      resolve(filesByDoc);
+    };
+    request.onerror = () => reject(request.error);
+  });
+}
+
+// 从 IndexedDB 删除单个文件
+function deleteFileFromDB(dbId) {
+  return new Promise((resolve, reject) => {
+    if (!db) return reject(new Error('数据库未初始化'));
+
+    const transaction = db.transaction(['files'], 'readwrite');
+    const store = transaction.objectStore('files');
+    const request = store.delete(dbId);
+
+    request.onsuccess = () => resolve();
+    request.onerror = () => reject(request.error);
+  });
+}
+
+// 清空所有文件
+function clearAllFilesFromDB() {
+  return new Promise((resolve, reject) => {
+    if (!db) return resolve();
+
+    const transaction = db.transaction(['files'], 'readwrite');
+    const store = transaction.objectStore('files');
+    const request = store.clear();
+
+    request.onsuccess = () => resolve();
+    request.onerror = () => reject(request.error);
+  });
+}
+
+// 下载已上传的文件
+function downloadStoredFile(docId, index) {
+  const file = uploadedFiles[docId][index];
+  if (!file || !file.data) {
+    alert('文件数据已丢失');
+    return;
+  }
+  const blob = new Blob([file.data], { type: file.type || 'application/octet-stream' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = file.name;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// 从 localStorage 恢复勾选状态
 function loadState() {
   try {
     const saved = localStorage.getItem('visa_checked_state');
     if (saved) checkedState = JSON.parse(saved);
-    const savedFiles = localStorage.getItem('visa_uploaded_files');
-    if (savedFiles) uploadedFiles = JSON.parse(savedFiles);
   } catch (e) {
     console.log('恢复状态失败', e);
   }
 }
 
-// 保存到 localStorage
+// 保存勾选状态到 localStorage
 function saveState() {
   try {
     localStorage.setItem('visa_checked_state', JSON.stringify(checkedState));
-    localStorage.setItem('visa_uploaded_files', JSON.stringify(uploadedFiles));
   } catch (e) {
     console.log('保存状态失败', e);
   }
@@ -1497,23 +1646,54 @@ function applyInitialState() {
   });
 }
 
-function handleFiles(docId, files) {
+async function handleFiles(docId, files) {
   if (!uploadedFiles[docId]) uploadedFiles[docId] = [];
 
-  Array.from(files).forEach(file => {
+  for (const file of Array.from(files)) {
     if (file.size > 20 * 1024 * 1024) {
       alert(`文件 "${file.name}" 超过 20MB 上限，请压缩后重新上传`);
-      return;
+      continue;
     }
-    uploadedFiles[docId].push({
-      name: file.name,
-      size: file.size,
-      timestamp: Date.now()
-    });
-  });
 
-  renderUploadedFiles(docId);
-  saveState();
+    try {
+      // 显示上传中状态
+      const tempItem = {
+        name: file.name,
+        size: file.size,
+        type: file.type,
+        uploading: true
+      };
+      uploadedFiles[docId].push(tempItem);
+      renderUploadedFiles(docId);
+
+      // 保存到 IndexedDB
+      const dbId = await saveFileToDB(docId, file);
+
+      // 更新条目（替换临时条目为正式条目）
+      const idx = uploadedFiles[docId].indexOf(tempItem);
+      if (idx !== -1) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          uploadedFiles[docId][idx] = {
+            dbId: dbId,
+            name: file.name,
+            size: file.size,
+            type: file.type,
+            data: reader.result,
+            timestamp: Date.now()
+          };
+          renderUploadedFiles(docId);
+        };
+        reader.readAsArrayBuffer(file);
+      }
+    } catch (err) {
+      console.error('保存文件失败:', err);
+      alert(`文件 "${file.name}" 保存失败：${err.message || '存储空间不足'}`);
+      // 移除失败的条目
+      uploadedFiles[docId] = uploadedFiles[docId].filter(f => f.name !== file.name || !f.uploading);
+      renderUploadedFiles(docId);
+    }
+  }
 }
 
 function renderUploadedFiles(docId) {
@@ -1526,21 +1706,42 @@ function renderUploadedFiles(docId) {
     return;
   }
 
-  container.innerHTML = files.map((f, i) => `
-    <div class="uploaded-file">
-      <span class="uploaded-file-icon">✓</span>
-      <span class="uploaded-file-name">${escapeHtml(f.name)}</span>
-      <span class="uploaded-file-size">${formatSize(f.size)}</span>
-      <button class="uploaded-file-remove" onclick="removeFile('${docId}', ${i})" aria-label="删除">×</button>
-    </div>
-  `).join('');
+  container.innerHTML = files.map((f, i) => {
+    if (f.uploading) {
+      return `
+        <div class="uploaded-file uploading">
+          <span class="uploaded-file-icon">⋯</span>
+          <span class="uploaded-file-name">${escapeHtml(f.name)}</span>
+          <span class="uploaded-file-size">保存中...</span>
+        </div>
+      `;
+    }
+    return `
+      <div class="uploaded-file">
+        <span class="uploaded-file-icon">✓</span>
+        <span class="uploaded-file-name" title="点击下载" onclick="downloadStoredFile('${docId}', ${i})" style="cursor:pointer;">${escapeHtml(f.name)}</span>
+        <span class="uploaded-file-size">${formatSize(f.size)}</span>
+        <button class="uploaded-file-remove" onclick="removeFile('${docId}', ${i})" aria-label="删除" title="删除">×</button>
+      </div>
+    `;
+  }).join('');
 }
 
-function removeFile(docId, index) {
-  if (uploadedFiles[docId]) {
+async function removeFile(docId, index) {
+  if (!uploadedFiles[docId]) return;
+  const file = uploadedFiles[docId][index];
+  if (!file) return;
+
+  if (!confirm(`确认删除文件 "${file.name}"？`)) return;
+
+  try {
+    if (file.dbId) {
+      await deleteFileFromDB(file.dbId);
+    }
     uploadedFiles[docId].splice(index, 1);
     renderUploadedFiles(docId);
-    saveState();
+  } catch (err) {
+    alert('删除失败：' + (err.message || '未知错误'));
   }
 }
 
@@ -1627,24 +1828,64 @@ function exportChecklist() {
   URL.revokeObjectURL(url);
 }
 
-function resetAll() {
-  if (!confirm('确认重置全部勾选状态及上传记录？')) return;
-  checkedState = {};
-  uploadedFiles = {};
-  saveState();
-  document.querySelectorAll('.doc-item').forEach(item => {
-    item.classList.remove('checked');
-    item.querySelector('.doc-checkbox').setAttribute('aria-checked', 'false');
-  });
-  document.querySelectorAll('.uploaded-files').forEach(c => c.innerHTML = '');
-  updateProgress();
+async function resetAll() {
+  if (!confirm('确认重置全部勾选状态及上传文件？此操作不可撤销。')) return;
+  try {
+    await clearAllFilesFromDB();
+    checkedState = {};
+    uploadedFiles = {};
+    saveState();
+    document.querySelectorAll('.doc-item').forEach(item => {
+      item.classList.remove('checked');
+      item.querySelector('.doc-checkbox').setAttribute('aria-checked', 'false');
+    });
+    document.querySelectorAll('.uploaded-files').forEach(c => c.innerHTML = '');
+    updateProgress();
+  } catch (err) {
+    alert('重置失败：' + (err.message || '未知错误'));
+  }
+}
+
+// 显示存储使用情况
+async function showStorageInfo() {
+  if (!navigator.storage || !navigator.storage.estimate) {
+    alert('当前浏览器不支持查询存储使用情况');
+    return;
+  }
+  const estimate = await navigator.storage.estimate();
+  const usedMB = (estimate.usage / 1024 / 1024).toFixed(2);
+  const quotaMB = (estimate.quota / 1024 / 1024).toFixed(0);
+  const percent = ((estimate.usage / estimate.quota) * 100).toFixed(1);
+
+  let fileCount = 0;
+  Object.values(uploadedFiles).forEach(arr => fileCount += arr.length);
+
+  alert(
+    `存储使用情况\n\n` +
+    `已上传文件数：${fileCount} 个\n` +
+    `占用空间：${usedMB} MB\n` +
+    `可用配额：约 ${quotaMB} MB\n` +
+    `使用比例：${percent}%\n\n` +
+    `提示：所有文件保存在当前浏览器本地，不会上传至任何服务器。如需在其他设备查看，请使用"导出材料清单"功能保存文本备份。`
+  );
 }
 
 // 初始化
-loadState();
-renderChecklist();
-applyInitialState();
-updateProgress();
+async function init() {
+  loadState();
+  try {
+    await initDB();
+    uploadedFiles = await loadFilesFromDB();
+  } catch (err) {
+    console.error('数据库初始化失败:', err);
+    alert('文件存储功能初始化失败，已上传文件可能无法保存。请尝试更换浏览器或检查浏览器隐私设置。');
+  }
+  renderChecklist();
+  applyInitialState();
+  updateProgress();
+}
+
+init();
 </script>
 </body>
 </html>
