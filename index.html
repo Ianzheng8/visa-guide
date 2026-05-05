@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>澳洲学生签证（Subclass 500）续签指南</title>
+<!-- 字体策略：优先使用系统字体，国内外都能秒加载；
+     英文衬线字体使用 jsDelivr CDN（国内访问良好） -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<style>
+  /* 仅加载英文衬线字体（用于专有名词强调），中文字体全部使用系统字体 */
+  @font-face {
+    font-family: 'Cormorant Garamond';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/cormorantgaramond/CormorantGaramond-Italic.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Cormorant Garamond';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/cormorantgaramond/CormorantGaramond-SemiBold.ttf') format('truetype');
+  }
+</style>
+<style>
+  :root {
+    --color-bg: #f4f1ea;
+    --color-bg-alt: #ebe6db;
+    --color-paper: #fdfbf6;
+    --color-ink: #1a1a1a;
+    --color-ink-soft: #4a4540;
+    --color-accent: #8b2c2c;
+    --color-accent-deep: #5c1818;
+    --color-gold: #b8954a;
+    --color-line: #d4cdba;
+    --color-success: #3d6b4f;
+    --color-warning: #c87d2a;
+    --font-display: 'Songti SC', 'STSong', 'SimSun', 'Noto Serif SC', 'Source Han Serif SC', serif;
+    --font-body: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+    --font-en: 'Cormorant Garamond', 'Georgia', serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--color-bg);
+    color: var(--color-ink);
+    line-height: 1.75;
+    font-size: 16px;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(184, 149, 74, 0.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(139, 44, 44, 0.03) 0%, transparent 40%);
+  }
+
+  /* 顶部封面 */
+  .hero {
+    padding: 80px 24px 60px;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .hero-mark {
+    font-family: var(--font-en);
+    font-style: italic;
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(28px, 6vw, 52px);
+    line-height: 1.2;
+    color: var(--color-ink);
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-title .accent {
+    color: var(--color-accent);
+    position: relative;
+    display: inline-block;
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(15px, 3vw, 19px);
+    color: var(--color-ink-soft);
+    max-width: 640px;
+    margin: 0 auto 32px;
+    line-height: 1.7;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--color-gold);
+    margin: 32px auto;
+    position: relative;
+  }
+  .hero-divider::before, .hero-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    background: var(--color-gold);
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+  .hero-divider::before { left: -12px; }
+  .hero-divider::after { right: -12px; }
+
+  .hero-meta {
+    font-family: var(--font-en);
+    font-size: 13px;
+    color: var(--color-ink-soft);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* 容器 */
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* 章节 */
+  section {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  section:last-child { border-bottom: none; }
+
+  .section-num {
+    font-family: var(--font-en);
+    font-size: 14px;
+    color: var(--color-accent);
+    letter-spacing: 0.3em;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(24px, 4.5vw, 36px);
+    line-height: 1.3;
+    color: var(--color-ink);
+    margin-bottom: 16px;
+    letter-spacing: -0.005em;
+  }
+
+  .section-intro {
+    font-size: clamp(15px, 2.5vw, 17px);
+    color: var(--color-ink-soft);
+    margin-bottom: 36px;
+    max-width: 720px;
+    line-height: 1.85;
+  }
+
+  /* 重要提示框 */
+  .callout {
+    background: var(--color-paper);
+    border-left: 3px solid var(--color-accent);
+    padding: 24px 28px;
+    margin: 28px 0;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  }
+
+  .callout-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: 10px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .callout-title::before {
+    content: '※';
+    font-size: 18px;
+  }
+
+  .callout-body {
+    color: var(--color-ink-soft);
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .callout.warn {
+    border-left-color: var(--color-warning);
+    background: linear-gradient(to right, rgba(200, 125, 42, 0.05), var(--color-paper));
+  }
+  .callout.warn .callout-title { color: var(--color-warning); }
+
+  .callout.success {
+    border-left-color: var(--color-success);
+    background: linear-gradient(to right, rgba(61, 107, 79, 0.05), var(--color-paper));
+  }
+  .callout.success .callout-title { color: var(--color-success); }
+
+  /* 时间线 */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+    margin: 32px 0;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 12px;
+    bottom: 12px;
+    width: 1px;
+    background: var(--color-line);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-bottom: 28px;
+  }
+
+  .timeline-item:last-child { padding-bottom: 0; }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -28px;
+    top: 8px;
+    width: 9px;
+    height: 9px;
+    background: var(--color-paper);
+    border: 2px solid var(--color-accent);
+    border-radius: 50%;
+  }
+
+  .timeline-item.active::before {
+    background: var(--color-accent);
+    box-shadow: 0 0 0 4px rgba(139, 44, 44, 0.15);
+  }
+
+  .timeline-date {
+    font-family: var(--font-en);
+    font-size: 13px;
+    color: var(--color-accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .timeline-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--color-ink);
+    margin-bottom: 4px;
+  }
+
+  .timeline-desc {
+    font-size: 14px;
+    color: var(--color-ink-soft);
+    line-height: 1.7;
+  }
+
+  /* 步骤 */
+  .step {
+    display: flex;
+    gap: 20px;
+    padding: 24px 0;
+    border-bottom: 1px dashed var(--color-line);
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-num {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-en);
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  .step-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .step-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: var(--color-ink);
+  }
+
+  .step-desc {
+    color: var(--color-ink-soft);
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  /* 文件清单交互 */
+  .checklist-intro {
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    padding: 24px;
+    border-radius: 4px;
+    margin-bottom: 28px;
+  }
+
+  .checklist-intro p {
+    font-size: 15px;
+    color: var(--color-ink-soft);
+    line-height: 1.85;
+  }
+
+  .progress-wrap {
+    background: var(--color-paper);
+    padding: 24px;
+    border-radius: 4px;
+    margin-bottom: 32px;
+    border: 1px solid var(--color-line);
+    position: sticky;
+    top: 12px;
+    z-index: 10;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  }
+
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .progress-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--color-ink);
+  }
+
+  .progress-stats {
+    font-family: var(--font-en);
+    font-size: 14px;
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .progress-bar {
+    height: 6px;
+    background: var(--color-bg-alt);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, var(--color-accent), var(--color-gold));
+    border-radius: 3px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0%;
+  }
+
+  .doc-category {
+    margin-bottom: 36px;
+  }
+
+  .doc-category-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--color-ink);
+  }
+
+  .doc-category-num {
+    font-family: var(--font-en);
+    font-size: 13px;
+    color: var(--color-accent);
+    letter-spacing: 0.2em;
+    flex-shrink: 0;
+  }
+
+  .doc-category-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--color-ink);
+  }
+
+  .doc-item {
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: 4px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .doc-item.checked {
+    background: linear-gradient(to right, rgba(61, 107, 79, 0.06), var(--color-paper));
+    border-color: var(--color-success);
+  }
+
+  .doc-item-main {
+    padding: 16px 18px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .doc-checkbox {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--color-line);
+    border-radius: 4px;
+    background: var(--color-bg);
+    transition: all 0.2s ease;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .doc-item.checked .doc-checkbox {
+    background: var(--color-success);
+    border-color: var(--color-success);
+  }
+
+  .doc-checkbox::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) scale(0);
+    transition: transform 0.2s ease;
+    margin-top: -2px;
+  }
+
+  .doc-item.checked .doc-checkbox::after {
+    transform: rotate(45deg) scale(1);
+  }
+
+  .doc-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .doc-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--color-ink);
+    margin-bottom: 4px;
+    line-height: 1.5;
+  }
+
+  .doc-item.checked .doc-name {
+    color: var(--color-success);
+  }
+
+  .doc-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+
+  .doc-tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .doc-tag.required {
+    background: rgba(139, 44, 44, 0.1);
+    color: var(--color-accent);
+  }
+
+  .doc-tag.recommended {
+    background: rgba(184, 149, 74, 0.15);
+    color: var(--color-gold);
+  }
+
+  .doc-tag.translate {
+    background: rgba(61, 107, 79, 0.1);
+    color: var(--color-success);
+  }
+
+  .doc-tag.notarize {
+    background: rgba(200, 125, 42, 0.1);
+    color: var(--color-warning);
+  }
+
+  .doc-toggle {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-ink-soft);
+    transition: transform 0.3s ease;
+    font-size: 14px;
+  }
+
+  .doc-item.expanded .doc-toggle {
+    transform: rotate(180deg);
+  }
+
+  .doc-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-top: 1px solid transparent;
+  }
+
+  .doc-item.expanded .doc-detail {
+    max-height: 800px;
+    border-top-color: var(--color-line);
+  }
+
+  .doc-detail-inner {
+    padding: 18px 18px 18px 54px;
+    font-size: 14px;
+    color: var(--color-ink-soft);
+    line-height: 1.85;
+  }
+
+  .doc-detail-inner p { margin-bottom: 10px; }
+  .doc-detail-inner p:last-child { margin-bottom: 0; }
+
+  .doc-detail-inner strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+
+  .doc-detail-inner ul {
+    padding-left: 20px;
+    margin: 8px 0;
+  }
+
+  .doc-detail-inner li {
+    margin-bottom: 6px;
+  }
+
+  /* 上传区域 */
+  .upload-zone {
+    margin-top: 16px;
+    border: 2px dashed var(--color-line);
+    border-radius: 6px;
+    padding: 20px;
+    text-align: center;
+    background: var(--color-bg);
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .upload-zone:hover, .upload-zone.dragover {
+    border-color: var(--color-accent);
+    background: rgba(139, 44, 44, 0.03);
+  }
+
+  .upload-zone-icon {
+    font-size: 24px;
+    color: var(--color-ink-soft);
+    margin-bottom: 6px;
+  }
+
+  .upload-zone-text {
+    font-size: 13px;
+    color: var(--color-ink-soft);
+  }
+
+  .upload-zone-hint {
+    font-size: 11px;
+    color: var(--color-ink-soft);
+    opacity: 0.7;
+    margin-top: 4px;
+    font-family: var(--font-en);
+  }
+
+  .upload-zone input[type="file"] {
+    display: none;
+  }
+
+  .uploaded-files {
+    margin-top: 12px;
+    text-align: left;
+  }
+
+  .uploaded-file {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: 4px;
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+
+  .uploaded-file-icon {
+    color: var(--color-success);
+    flex-shrink: 0;
+  }
+
+  .uploaded-file-name {
+    flex: 1;
+    color: var(--color-ink);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .uploaded-file-size {
+    color: var(--color-ink-soft);
+    font-family: var(--font-en);
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  .uploaded-file-remove {
+    background: none;
+    border: none;
+    color: var(--color-ink-soft);
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 16px;
+    line-height: 1;
+    transition: color 0.2s ease;
+  }
+
+  .uploaded-file-remove:hover {
+    color: var(--color-accent);
+  }
+
+  /* 总结区 */
+  .summary-card {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    padding: 36px 28px;
+    border-radius: 6px;
+    margin: 32px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .summary-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--color-accent), var(--color-gold));
+  }
+
+  .summary-stat {
+    display: inline-block;
+    margin: 0 16px;
+    padding: 8px 0;
+  }
+
+  .summary-stat-num {
+    font-family: var(--font-en);
+    font-weight: 600;
+    font-size: 36px;
+    color: var(--color-gold);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .summary-stat-label {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    opacity: 0.8;
+  }
+
+  .summary-message {
+    margin-top: 16px;
+    font-family: var(--font-display);
+    font-size: 15px;
+    line-height: 1.8;
+    opacity: 0.95;
+  }
+
+  /* 操作按钮 */
+  .actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+    justify-content: center;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .btn-primary {
+    background: var(--color-accent);
+    color: var(--color-paper);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-accent-deep);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-paper);
+    border: 1px solid var(--color-paper);
+    opacity: 0.7;
+  }
+
+  .btn-secondary:hover {
+    opacity: 1;
+  }
+
+  /* 页脚 */
+  .footer {
+    padding: 40px 24px;
+    text-align: center;
+    background: var(--color-bg-alt);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .footer-text {
+    font-size: 13px;
+    color: var(--color-ink-soft);
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .footer-mark {
+    font-family: var(--font-en);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--color-ink-soft);
+    margin-top: 16px;
+    text-transform: uppercase;
+  }
+
+  /* 强调英文术语 */
+  .term {
+    font-family: var(--font-en);
+    font-style: italic;
+    color: var(--color-accent);
+    font-weight: 500;
+    font-size: 0.95em;
+  }
+
+  /* 响应式 */
+  @media (max-width: 640px) {
+    .hero { padding: 60px 20px 40px; }
+    section { padding: 56px 0; }
+    .container { padding: 0 20px; }
+
+    .step { gap: 14px; padding: 20px 0; }
+    .step-num { width: 36px; height: 36px; font-size: 15px; }
+
+    .summary-stat { margin: 0 8px; }
+    .summary-stat-num { font-size: 28px; }
+
+    .doc-detail-inner { padding: 16px 16px 16px 18px; }
+
+    .progress-wrap { padding: 18px; }
+
+    .doc-item-main { padding: 14px 14px; gap: 12px; }
+    .doc-name { font-size: 15px; }
+  }
+
+  @media (max-width: 380px) {
+    body { font-size: 15px; }
+    .doc-tag { font-size: 10px; padding: 2px 6px; }
+  }
+
+  /* 减少动效偏好 */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* 选中文字样式 */
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-paper);
+  }
+</style>
+</head>
+<body>
+
+<!-- 顶部封面 -->
+<header class="hero">
+  <div class="container">
+    <span class="hero-mark">Student Visa · Subclass 500 · Renewal Guide</span>
+    <h1 class="hero-title">
+      澳洲学生签证<br>
+      <span class="accent">续签申请指南</span>
+    </h1>
+    <p class="hero-subtitle">
+      本指南汇总学生签证续签所需的全部材料与流程要点<br>
+      区分澳洲境内办理事项与中国境内办理事项，供查阅参考
+    </p>
+    <div class="hero-divider"></div>
+    <div class="hero-meta">Document Reference · 2026</div>
+  </div>
+</header>
+
+<!-- 一、整体情况说明 -->
+<section>
+  <div class="container">
+    <span class="section-num">01 — Overview</span>
+    <h2 class="section-title">续签事项概述</h2>
+    <p class="section-intro">
+      澳洲的学生签证（<span class="term">Student Visa Subclass 500</span>，即"学生签证 500 类"）不设自动续期机制。本次因课程安排原因，须在原签证到期后继续完成学业，故须在原签证过期前重新提交学生签证申请。该程序通常称为"续签"。
+    </p>
+
+    <div class="callout">
+      <div class="callout-title">续签原因</div>
+      <div class="callout-body">
+        本人尚有一门必修课程未完成，且该课程仅于下半学期（<span class="term">Semester 2</span>，即"第二学期"）开设。此为学校课程安排所致的客观情况，属澳洲移民局认可的合理续签理由。
+      </div>
+    </div>
+
+    <div class="callout success">
+      <div class="callout-title">合法身份保障机制</div>
+      <div class="callout-body">
+        在原签证过期<strong>之前</strong>成功提交附有新入学确认书（<span class="term">Confirmation of Enrolment</span>，即"入学确认书"，简称 CoE）的签证申请后，系统将自动签发<strong>过桥签证 A</strong>（<span class="term">Bridging Visa A</span>，简称 BVA）。在新签证审批期间，本人持过桥签证 A 合法停留，不影响学籍状态。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 二、关键时间线 -->
+<section>
+  <div class="container">
+    <span class="section-num">02 — Timeline</span>
+    <h2 class="section-title">关键时间节点</h2>
+    <p class="section-intro">
+      本次续签流程围绕三个核心日期展开，以下时间节点供参考，便于国内外协调准备相关文件。
+    </p>
+
+    <div class="timeline">
+      <div class="timeline-item active">
+        <span class="timeline-date">Now · 现阶段</span>
+        <div class="timeline-title">准备阶段</div>
+        <div class="timeline-desc">联系学校国际学生办公室确认相关细节；同时着手准备资金类文件，保持银行账户余额稳定（建议提前 3 至 6 个月）。</div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">July · 七月</span>
+        <div class="timeline-title">原入学确认书到期</div>
+        <div class="timeline-desc">原入学确认书于七月失效，须向学校申请新的入学确认书，覆盖第二学期课程。</div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">Jul – Sep · 七月至九月</span>
+        <div class="timeline-title">新签证申请窗口期</div>
+        <div class="timeline-desc">取得新入学确认书后，须立即通过<span class="term">ImmiAccount</span>（"移民局在线账户"）递交新签证申请。全部材料须在此窗口期内完成准备。</div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-date">September · 九月</span>
+        <div class="timeline-title">原学生签证到期</div>
+        <div class="timeline-desc">须在此日期前完成签证递交。一经成功递交，过桥签证 A 将于原签证过期当日自动激活，保障合法停留身份。</div>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <div class="callout-title">关键事项提示</div>
+      <div class="callout-body">
+        签证申请必须在九月原签证过期<strong>之前</strong>递交，且递交时须已附有新入学确认书。逾期递交将构成非法滞留，可能导致三年内禁止入境澳洲的严重后果。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 三、流程概览 -->
+<section>
+  <div class="container">
+    <span class="section-num">03 — At a Glance</span>
+    <h2 class="section-title">流程概览</h2>
+    <p class="section-intro">
+      续签流程的核心环节为：取得学校签发的新入学确认书后，整理齐备全部申请材料，并于原签证过期前通过移民局在线账户递交申请。系统将自动签发过桥签证以保障合法身份，随后等待审批结果。
+    </p>
+
+    <div class="callout">
+      <div class="callout-title">事项分工</div>
+      <div class="callout-body">
+        <strong>澳洲境内办理事项：</strong>申请新入学确认书（CoE）、续保海外学生健康保险（OSHC）、统一安排全部文件的 NAATI 认证翻译、通过移民局在线账户（ImmiAccount）递交申请、完成体检（如有要求）。<br><br>
+        <strong>中国境内办理事项：</strong>银行存款证明、银行流水、父母在职及收入证明、纳税证明、户口本或出生公证（用于证明亲属关系）、资助声明信签署。详细清单详见下一章节。
+      </div>
+    </div>
+
+    <div class="callout success">
+      <div class="callout-title">翻译事项说明</div>
+      <div class="callout-body">
+        中国境内出具的全部文件，将统一由本人在澳洲安排 NAATI 认证翻译，因此中国境内仅需准备<strong>清晰的中文原件扫描件</strong>，无需在国内自行办理翻译。户口本公证为例外情形——公证处出具的涉外公证书已附英文翻译，可直接使用。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 四、文件清单（核心交互区） -->
+<section>
+  <div class="container">
+    <span class="section-num">04 — Document Checklist</span>
+    <h2 class="section-title">文件清单及核对表</h2>
+    <p class="section-intro">
+      以下为续签所需的全部文件清单，请逐项核对。可勾选已准备完毕的项目，并上传扫描件作为留存备份。本页面所有数据仅保存于浏览器本地，不会上传至任何服务器，刷新页面后勾选状态将自动保留。
+    </p>
+
+    <div class="checklist-intro">
+      <p><strong>标签含义说明：</strong></p>
+      <p>
+        <span class="doc-tag required">必需</span> 此项缺失将导致申请无效　
+        <span class="doc-tag recommended">建议</span> 建议提供，以提升申请通过率
+      </p>
+      <p style="margin-top:8px;">
+        <span class="doc-tag translate">需翻译</span> 中文文件须经 NAATI 认证翻译为英文　
+        <span class="doc-tag notarize">需公证</span> 须在国内公证处办理公证
+      </p>
+    </div>
+
+    <!-- 进度条 -->
+    <div class="progress-wrap">
+      <div class="progress-header">
+        <span class="progress-label">材料准备进度</span>
+        <span class="progress-stats" id="progress-stats">0 / 0 已完成</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <!-- 类别 1：核心签证文件 -->
+    <div class="doc-category">
+      <div class="doc-category-header">
+        <span class="doc-category-num">A</span>
+        <span class="doc-category-title">核心签证文件（澳洲境内办理）</span>
+      </div>
+      <div id="docs-A"></div>
+    </div>
+
+    <!-- 类别 2：身份与关系类文件 -->
+    <div class="doc-category">
+      <div class="doc-category-header">
+        <span class="doc-category-num">B</span>
+        <span class="doc-category-title">身份与关系类文件（中国境内办理）</span>
+      </div>
+      <div id="docs-B"></div>
+    </div>
+
+    <!-- 类别 3：资金证明类文件 -->
+    <div class="doc-category">
+      <div class="doc-category-header">
+        <span class="doc-category-num">C</span>
+        <span class="doc-category-title">资金证明类文件（中国境内办理）</span>
+      </div>
+      <div id="docs-C"></div>
+    </div>
+
+    <!-- 类别 4：学业相关文件 -->
+    <div class="doc-category">
+      <div class="doc-category-header">
+        <span class="doc-category-num">D</span>
+        <span class="doc-category-title">学业相关文件（由学校签发）</span>
+      </div>
+      <div id="docs-D"></div>
+    </div>
+
+    <!-- 类别 5：其他证明文件 -->
+    <div class="doc-category">
+      <div class="doc-category-header">
+        <span class="doc-category-num">E</span>
+        <span class="doc-category-title">其他证明文件</span>
+      </div>
+      <div id="docs-E"></div>
+    </div>
+
+    <!-- 总结卡片 -->
+    <div class="summary-card">
+      <div class="summary-stat">
+        <span class="summary-stat-num" id="summary-total">0</span>
+        <span class="summary-stat-label">材料总数</span>
+      </div>
+      <div class="summary-stat">
+        <span class="summary-stat-num" id="summary-done">0</span>
+        <span class="summary-stat-label">已准备</span>
+      </div>
+      <div class="summary-stat">
+        <span class="summary-stat-num" id="summary-remaining">0</span>
+        <span class="summary-stat-label">待办事项</span>
+      </div>
+      <div class="summary-message" id="summary-message">
+        点击各文件卡片可查看详细说明，并勾选已准备完毕的项目
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" onclick="exportChecklist()">导出材料清单</button>
+        <button class="btn btn-secondary" onclick="resetAll()">重置全部状态</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 五、温馨提示 -->
+<section>
+  <div class="container">
+    <span class="section-num">05 — Final Notes</span>
+    <h2 class="section-title">注意事项</h2>
+
+    <div class="callout">
+      <div class="callout-title">资金证明稳定性</div>
+      <div class="callout-body">
+        签证审批官重点审查资金的真实性与稳定性，临时大额转入的资金易引起合理怀疑。建议<strong>提前 3 至 6 个月</strong>保持账户余额稳定，避免突击存款。定期存款应同时提供存款历史记录；工资账户应配合提供工资流水明细。</div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">翻译事项常见误区</div>
+      <div class="callout-body">
+        澳洲境内申请，移民局仅认可 NAATI 认证翻译。中国境内提供清晰的中文原件扫描件即可，统一由本人在澳洲安排 NAATI 翻译机构办理，更为高效经济。<strong>例外情形：</strong>如选择在国内公证处办理涉外公证书，公证处出具的英文翻译亦被认可（公证与翻译一体出具）。</div>
+    </div>
+
+    <div class="callout warn">
+      <div class="callout-title">常见错误警示</div>
+      <div class="callout-body">
+        一、银行存款证明开具日期距递交申请超过 28 天将被退回，请于其他材料齐备后再开具；<br>
+        二、资助声明信须由父母<strong>本人手写签名</strong>，扫描件须清晰可辨；<br>
+        三、户口本须完整扫描全部页面，任何缺页将影响亲属关系认定；<br>
+        四、任何文件如存在造假迹象，将导致签证被拒，并可能被列入黑名单 3 年。
+      </div>
+    </div>
+
+    <div class="callout success">
+      <div class="callout-title">总体说明</div>
+      <div class="callout-body">
+        因课程安排原因延期一学期的续签申请，属澳洲移民局常见且熟悉的处理情形。只要文件齐备、按时递交，通过率较高。重点在于提供清晰、真实的中国境内文件。</div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p class="footer-text">
+    本指南依据公开信息整理，仅供参考使用，不构成正式法律或移民建议。如遇复杂情形，建议咨询澳洲注册移民代理（<span class="term">MARA Registered Migration Agent</span>，"澳洲注册移民代理协会注册代理"）。<br>所有信息以澳洲移民局官方网站 immi.homeaffairs.gov.au 公布的最新内容为准。
+  </p>
+  <div class="footer-mark">Reference Document</div>
+</footer>
+
+<script>
+// 文件清单数据
+const documents = {
+  A: [
+    {
+      id: 'a1',
+      name: '有效护照',
+      tags: [{ type: 'required', text: '必需' }],
+      detail: `<p>护照须在新签证有效期内保持有效，建议剩余有效期不少于 6 个月。</p>
+        <p><strong>国内是否需要办理：</strong>否。由本人自行持有护照即可。</p>
+        <p><strong>提交形式：</strong>护照个人信息页扫描件，彩色高清。</p>`
+    },
+    {
+      id: 'a2',
+      name: '新的入学确认书（CoE）',
+      tags: [{ type: 'required', text: '必需' }],
+      detail: `<p>由学校直接签发，覆盖第二学期所需修读课程。</p>
+        <p><strong>关键点：</strong>未附入学确认书的签证申请将被视为"无效"（<span class="term">Invalid</span>），无法获得过桥签证。</p>
+        <p><strong>国内是否需要办理：</strong>否，由本人直接与学校沟通办理。</p>`
+    },
+    {
+      id: 'a3',
+      name: '学生签证 500 类申请表',
+      tags: [{ type: 'required', text: '必需' }],
+      detail: `<p>在移民局在线账户（ImmiAccount）系统中在线填写，无纸质表格。</p>
+        <p><strong>国内需要提供：</strong>姓名拼音、出生日期、护照号（如有）、家庭地址、联系方式等基本信息。</p>`
+    },
+    {
+      id: 'a4',
+      name: '海外学生健康保险（OSHC）保单',
+      tags: [{ type: 'required', text: '必需' }],
+      detail: `<p>须续保海外学生健康保险（OSHC），新保单须完整覆盖新签证有效期。</p>
+        <p><strong>主要供应商：</strong>Bupa、Medibank、Allianz、nib、ahm 等。</p>
+        <p><strong>关键点：</strong>新旧保单必须无缝衔接，不能有 24 小时以上的空档期。</p>
+        <p><strong>国内是否需要办理：</strong>否。由本人在澳洲境内在线购买。</p>`
+    },
+    {
+      id: 'a5',
+      name: '签证申请费缴费凭证',
+      tags: [{ type: 'required', text: '必需' }],
+      detail: `<p>2025 年 7 月 1 日后主申请人申请费约 2,000 澳元。</p>
+        <p><strong>缴费方式：</strong>在 ImmiAccount 系统内通过信用卡或借记卡在线支付。</p>
+        <p><strong>国内是否需要办理：</strong>提供资金支持，可由国内信用卡支付，亦可由本人在澳洲境内的本地卡支付。</p>`
+    }
+  ],
+  B: [
+    {
+      id: 'b1',
+      name: '学生本人护照扫描件',
+      tags: [{ type: 'required', text: '必需' }],
+      detail: `<p>护照个人信息页 + 所有签证页（包括澳洲签证、其他国家签证）。</p>
+        <p><strong>国内需要办理：</strong>如护照原件存放于家中，请扫描为清晰彩色 PDF 后传送至本人。</p>`
+    },
+    {
+      id: 'b2',
+      name: '出生公证书 或 户口本公证书',
+      tags: [
+        { type: 'required', text: '必需' },
+        { type: 'notarize', text: '需公证' }
+      ],
+      detail: `<p>用于证明亲属关系。两者任选其一即可，<strong>建议办理户口本公证</strong>，可同时显示家庭多位成员的亲属关系。</p>
+        <p><strong>办理地点：</strong>父母户籍所在地的公证处。</p>
+        <p><strong>办理材料：</strong>户口本原件、父母身份证、本人身份证或护照复印件。</p>
+        <p><strong>办理费用：</strong>因地区而异，通常为 200 至 400 元人民币。</p>
+        <p><strong>办理时间：</strong>通常需 5 至 10 个工作日。建议<strong>尽早办理</strong>，公证书有效期较长，可提前准备。</p>
+        <p><strong>注意：</strong>公证处办理时将一并出具英文翻译版本（即"涉外公证书"），无需另行办理 NAATI 翻译。</p>`
+    },
+    {
+      id: 'b3',
+      name: '父母身份证',
+      tags: [
+        { type: 'required', text: '必需' },
+        { type: 'translate', text: '需翻译' }
+      ],
+      detail: `<p>父母双方身份证正反面扫描件（彩色清晰）。</p>
+        <p><strong>国内需要办理：</strong>使用扫描仪或高清拍照，正反面分别扫描，清晰可读。</p>
+        <p><strong>翻译：</strong>由本人在澳洲境内寻找 NAATI 认证翻译员办理翻译。</p>`
+    },
+    {
+      id: 'b4',
+      name: '父母护照（如有）',
+      tags: [{ type: 'recommended', text: '建议' }],
+      detail: `<p>如果父母有护照，提供个人信息页扫描件作为补充身份证明。</p>
+        <p><strong>国内是否需要办理：</strong>有则提供，没有则跳过。</p>`
+    }
+  ],
+  C: [
+    {
+      id: 'c1',
+      name: '银行存款证明',
+      tags: [
+        { type: 'required', text: '必需' },
+        { type: 'translate', text: '需翻译' }
+      ],
+      detail: `<p>由开户银行（如工商银行、建设银行、招商银行等）开具的中文存款证明，证明账户中的存款金额和冻结期。</p>
+        <p><strong>建议开具金额：</strong>覆盖一学期学费、半年生活费及回程机票费用，金额建议为 30 至 50 万元人民币（具体依实际学费而定）。</p>
+        <p><strong>关键点：</strong>开具时间须在递交签证申请<strong>前 28 天以内</strong>，超期开具将被视为失效。</p>
+        <p><strong>办理地点：</strong>父母（或本人）账户的开户银行柜台。</p>
+        <p><strong>办理费用：</strong>每份约 20–50 元人民币。</p>
+        <p><strong>注意：</strong>建议同时开具<strong>定期存款证明</strong>，较活期存款更具说服力。</p>`
+    },
+    {
+      id: 'c2',
+      name: '银行流水（3-6 个月）',
+      tags: [
+        { type: 'recommended', text: '建议' },
+        { type: 'translate', text: '需翻译' }
+      ],
+      detail: `<p>提供 3 至 6 个月的银行交易流水，用以证明资金的稳定性与真实性。</p>
+        <p><strong>办理地点：</strong>开户银行柜台或网银下载。</p>
+        <p><strong>关键点：</strong>流水应显示工资入账及稳定收支，避免大额突击存款。如近期存在大额转入情形，须准备相应说明文件（如房产转让、理财赎回等）。</p>`
+    },
+    {
+      id: 'c3',
+      name: '父母在职证明 / 收入证明',
+      tags: [
+        { type: 'required', text: '必需' },
+        { type: 'translate', text: '需翻译' }
+      ],
+      detail: `<p>父母双方所在工作单位开具的在职证明，注明：职位、入职日期、年收入、单位地址、联系方式。</p>
+        <p><strong>盖章要求：</strong>须加盖单位<strong>公章</strong>（红章），并由单位人事部门或主管签字确认。</p>
+        <p><strong>语言：</strong>中文版本即可，由本人在澳洲安排 NAATI 认证翻译。</p>
+        <p><strong>如父母为自由职业或个体经营者：</strong>提供营业执照副本、近 1 至 2 年纳税证明及公司流水。</p>`
+    },
+    {
+      id: 'c4',
+      name: '父母纳税证明 / 完税证明',
+      tags: [
+        { type: 'recommended', text: '建议' },
+        { type: 'translate', text: '需翻译' }
+      ],
+      detail: `<p>近 1 至 2 年的个人所得税完税证明，可通过国家税务总局个人所得税 APP 或当地税务局开具。</p>
+        <p><strong>作用：</strong>佐证收入证明的真实性，为有力的辅助证明材料。</p>`
+    },
+    {
+      id: 'c5',
+      name: '资助声明信（手写签名）',
+      tags: [{ type: 'required', text: '必需' }],
+      detail: `<p>由由父母签署的承诺函，明确表示自愿承担本人在澳洲的学费及生活费用。</p>
+        <p><strong>内容要点：</strong>
+        <ul>
+          <li>声明人姓名、与本人之关系、身份证号</li>
+          <li>明确声明资助本人（注明姓名）在澳洲完成学业</li>
+          <li>承诺承担学费、生活费、保险费等全部费用</li>
+          <li>父母双方<strong>手写签名</strong>和日期</li>
+        </ul></p>
+        <p><strong>语言：</strong>建议直接采用英文版本（可由本人起草英文初稿，父母打印后签字确认），无需另行翻译。</p>`
+    },
+    {
+      id: 'c6',
+      name: '房产证（如有）',
+      tags: [
+        { type: 'recommended', text: '建议' },
+        { type: 'translate', text: '需翻译' }
+      ],
+      detail: `<p>提供家庭名下房产证扫描件，作为家庭资产辅助证明，可进一步增强资金实力的可信度。</p>
+        <p><strong>国内需要办理：</strong>提供清晰扫描件即可，无需公证。</p>`
+    }
+  ],
+  D: [
+    {
+      id: 'd1',
+      name: '历年成绩单（Academic Transcript）',
+      tags: [{ type: 'required', text: '必需' }],
+      detail: `<p>由学校教务系统或国际学生办公室开具的官方成绩单，显示已通过的所有课程。</p>
+        <p><strong>国内是否需要办理：</strong>否。由本人从学校系统获取。</p>
+        <p><strong>作用：</strong>证明学生已经完成大部分课程，只剩一门即可毕业，凸显延期的合理性。</p>`
+    },
+    {
+      id: 'd2',
+      name: '学业进度说明信（Academic Progression Letter）',
+      tags: [{ type: 'recommended', text: '建议' }],
+      detail: `<p>由学校国际学生办公室或教务处出具，说明：① 本人剩余的毕业要求 ② 该课程为什么只在第二学期开设 ③ 预计毕业日期。</p>
+        <p><strong>关键作用：</strong>此函较本人自行解释更具说服力，是真诚学生声明（GS Statement）的有力佐证。</p>
+        <p><strong>国内是否需要办理：</strong>否。由本人主动联系学校开具。</p>`
+    },
+    {
+      id: 'd3',
+      name: '课程开设证明 / 学校手册截图',
+      tags: [{ type: 'recommended', text: '建议' }],
+      detail: `<p>学校官方课程手册（<span class="term">Course Handbook</span>）中显示该必修课"仅第二学期开设"的页面截图或链接。</p>
+        <p><strong>作用：</strong>客观证据，证明延期是因为课程安排，而非个人原因。</p>`
+    },
+    {
+      id: 'd4',
+      name: '真诚学生声明（GS Statement）',
+      tags: [{ type: 'required', text: '必需' }],
+      detail: `<p>真诚学生声明（<span class="term">Genuine Student Statement</span>，简称 GS Statement，"真诚学生声明"）系 2024 年 3 月起取代原"真实临时入境者"声明的新规定要求。</p>
+        <p><strong>内容要点：</strong>
+        <ul>
+          <li>个人基本情况和留学历程</li>
+          <li>为什么需要延期一学期（强调课程开设安排的客观原因）</li>
+          <li>已完成的学业进度（成绩、出勤等）</li>
+          <li>毕业后的明确计划（回国就业方向）</li>
+          <li>资金来源说明和合规承诺</li>
+        </ul></p>
+        <p><strong>国内是否需要办理：</strong>否，由本人撰写。</p>`
+    }
+  ],
+  E: [
+    {
+      id: 'e1',
+      name: '体检报告',
+      tags: [{ type: 'recommended', text: '建议' }],
+      detail: `<p>如距上次体检超过 12 个月，须重新进行体检，须前往 Bupa Medical Visa Services 指定体检中心办理。</p>
+        <p><strong>国内是否需要办理：</strong>否，由本人在澳洲自行预约。</p>
+        <p><strong>费用：</strong>约 350 至 450 澳元。</p>`
+    },
+    {
+      id: 'e2',
+      name: '中国无犯罪记录证明',
+      tags: [
+        { type: 'recommended', text: '建议' },
+        { type: 'notarize', text: '需公证' }
+      ],
+      detail: `<p>如本人在中国境内连续居住超过 12 个月（通常指 16 岁之后），可能被要求提供此项证明。</p>
+        <p><strong>办理地点：</strong>户籍所在地派出所开具，再到公证处办理"无犯罪记录公证书"。</p>
+        <p><strong>国内需要办理：</strong>可凭本人委托书代为办理（须由本人签署委托书并办理公证）。</p>
+        <p><strong>注意：</strong><strong>非必需文件</strong>，仅在签证官特别要求时方需补办。</p>`
+    },
+    {
+      id: 'e3',
+      name: '过往签证记录截图',
+      tags: [{ type: 'recommended', text: '建议' }],
+      detail: `<p>通过签证状态查询系统（<span class="term">Visa Entitlement Verification Online</span>，简称 VEVO，"签证权益在线查询系统"）打印本人历次澳洲签证记录。</p>
+        <p><strong>作用：</strong>展示良好的签证合规记录。</p>
+        <p><strong>国内是否需要办理：</strong>否。由本人通过 VEVO 自助查询打印。</p>`
+    },
+    {
+      id: 'e4',
+      name: '英语成绩证明（如学校要求）',
+      tags: [{ type: 'recommended', text: '建议' }],
+      detail: `<p>如雅思（IELTS）、托福（TOEFL）、PTE 等成绩单。</p>
+        <p><strong>注意：</strong>已在澳洲完成学业期间课程者通常无需重新提供，学校录取记录即为有力证明。</p>`
+    }
+  ]
+};
+
+// 渲染清单
+function renderChecklist() {
+  Object.keys(documents).forEach(category => {
+    const container = document.getElementById('docs-' + category);
+    if (!container) return;
+    documents[category].forEach(doc => {
+      const item = createDocItem(doc);
+      container.appendChild(item);
+    });
+  });
+}
+
+function createDocItem(doc) {
+  const div = document.createElement('div');
+  div.className = 'doc-item';
+  div.dataset.id = doc.id;
+
+  const tagsHTML = doc.tags.map(t => `<span class="doc-tag ${t.type}">${t.text}</span>`).join('');
+
+  div.innerHTML = `
+    <div class="doc-item-main">
+      <div class="doc-checkbox" role="checkbox" aria-checked="false" tabindex="0"></div>
+      <div class="doc-info">
+        <div class="doc-name">${doc.name}</div>
+        <div class="doc-tags">${tagsHTML}</div>
+      </div>
+      <div class="doc-toggle">▼</div>
+    </div>
+    <div class="doc-detail">
+      <div class="doc-detail-inner">
+        ${doc.detail}
+        <div class="upload-zone" data-doc-id="${doc.id}">
+          <div class="upload-zone-icon">⬆</div>
+          <div class="upload-zone-text">点击或拖拽文件至此处上传</div>
+          <div class="upload-zone-hint">PDF · JPG · PNG · 单个文件不超过 20MB</div>
+          <input type="file" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" data-doc-id="${doc.id}">
+        </div>
+        <div class="uploaded-files" data-files-for="${doc.id}"></div>
+      </div>
+    </div>
+  `;
+
+  // 勾选事件
+  const checkbox = div.querySelector('.doc-checkbox');
+  const main = div.querySelector('.doc-item-main');
+
+  // 点击主区域：切换展开
+  main.addEventListener('click', (e) => {
+    if (e.target === checkbox || checkbox.contains(e.target)) return;
+    div.classList.toggle('expanded');
+  });
+
+  // 点击 checkbox：切换勾选
+  checkbox.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleCheck(doc.id);
+  });
+
+  // 键盘可访问性
+  checkbox.addEventListener('keydown', (e) => {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      toggleCheck(doc.id);
+    }
+  });
+
+  // 上传区域事件
+  const uploadZone = div.querySelector('.upload-zone');
+  const fileInput = div.querySelector('input[type="file"]');
+
+  uploadZone.addEventListener('click', () => fileInput.click());
+
+  uploadZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    uploadZone.classList.add('dragover');
+  });
+
+  uploadZone.addEventListener('dragleave', () => {
+    uploadZone.classList.remove('dragover');
+  });
+
+  uploadZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadZone.classList.remove('dragover');
+    handleFiles(doc.id, e.dataTransfer.files);
+  });
+
+  fileInput.addEventListener('change', (e) => {
+    handleFiles(doc.id, e.target.files);
+  });
+
+  return div;
+}
+
+// 状态管理
+let checkedState = {};
+let uploadedFiles = {};
+
+// 从 localStorage 恢复
+function loadState() {
+  try {
+    const saved = localStorage.getItem('visa_checked_state');
+    if (saved) checkedState = JSON.parse(saved);
+    const savedFiles = localStorage.getItem('visa_uploaded_files');
+    if (savedFiles) uploadedFiles = JSON.parse(savedFiles);
+  } catch (e) {
+    console.log('恢复状态失败', e);
+  }
+}
+
+// 保存到 localStorage
+function saveState() {
+  try {
+    localStorage.setItem('visa_checked_state', JSON.stringify(checkedState));
+    localStorage.setItem('visa_uploaded_files', JSON.stringify(uploadedFiles));
+  } catch (e) {
+    console.log('保存状态失败', e);
+  }
+}
+
+function toggleCheck(docId) {
+  checkedState[docId] = !checkedState[docId];
+  const item = document.querySelector(`.doc-item[data-id="${docId}"]`);
+  if (item) {
+    item.classList.toggle('checked', checkedState[docId]);
+    const cb = item.querySelector('.doc-checkbox');
+    cb.setAttribute('aria-checked', checkedState[docId] ? 'true' : 'false');
+  }
+  updateProgress();
+  saveState();
+}
+
+// 应用初始勾选状态
+function applyInitialState() {
+  Object.keys(checkedState).forEach(docId => {
+    if (checkedState[docId]) {
+      const item = document.querySelector(`.doc-item[data-id="${docId}"]`);
+      if (item) {
+        item.classList.add('checked');
+        const cb = item.querySelector('.doc-checkbox');
+        cb.setAttribute('aria-checked', 'true');
+      }
+    }
+  });
+  // 应用上传文件展示
+  Object.keys(uploadedFiles).forEach(docId => {
+    if (uploadedFiles[docId] && uploadedFiles[docId].length > 0) {
+      renderUploadedFiles(docId);
+    }
+  });
+}
+
+function handleFiles(docId, files) {
+  if (!uploadedFiles[docId]) uploadedFiles[docId] = [];
+
+  Array.from(files).forEach(file => {
+    if (file.size > 20 * 1024 * 1024) {
+      alert(`文件 "${file.name}" 超过 20MB 上限，请压缩后重新上传`);
+      return;
+    }
+    uploadedFiles[docId].push({
+      name: file.name,
+      size: file.size,
+      timestamp: Date.now()
+    });
+  });
+
+  renderUploadedFiles(docId);
+  saveState();
+}
+
+function renderUploadedFiles(docId) {
+  const container = document.querySelector(`[data-files-for="${docId}"]`);
+  if (!container) return;
+
+  const files = uploadedFiles[docId] || [];
+  if (files.length === 0) {
+    container.innerHTML = '';
+    return;
+  }
+
+  container.innerHTML = files.map((f, i) => `
+    <div class="uploaded-file">
+      <span class="uploaded-file-icon">✓</span>
+      <span class="uploaded-file-name">${escapeHtml(f.name)}</span>
+      <span class="uploaded-file-size">${formatSize(f.size)}</span>
+      <button class="uploaded-file-remove" onclick="removeFile('${docId}', ${i})" aria-label="删除">×</button>
+    </div>
+  `).join('');
+}
+
+function removeFile(docId, index) {
+  if (uploadedFiles[docId]) {
+    uploadedFiles[docId].splice(index, 1);
+    renderUploadedFiles(docId);
+    saveState();
+  }
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function formatSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / 1024 / 1024).toFixed(1) + ' MB';
+}
+
+function updateProgress() {
+  const allDocs = [];
+  Object.values(documents).forEach(arr => {
+    arr.forEach(d => allDocs.push(d));
+  });
+
+  const requiredDocs = allDocs.filter(d => d.tags.some(t => t.type === 'required'));
+  const total = allDocs.length;
+  const done = allDocs.filter(d => checkedState[d.id]).length;
+  const requiredDone = requiredDocs.filter(d => checkedState[d.id]).length;
+  const remaining = total - done;
+  const percent = total === 0 ? 0 : Math.round((done / total) * 100);
+
+  document.getElementById('progress-stats').textContent = `${done} / ${total} 已完成`;
+  document.getElementById('progress-fill').style.width = percent + '%';
+  document.getElementById('summary-total').textContent = total;
+  document.getElementById('summary-done').textContent = done;
+  document.getElementById('summary-remaining').textContent = remaining;
+
+  const message = document.getElementById('summary-message');
+  if (done === 0) {
+    message.textContent = '点击各文件卡片可查看详细说明，并勾选已准备完毕的项目';
+  } else if (requiredDone < requiredDocs.length) {
+    message.textContent = `尚有 ${requiredDocs.length - requiredDone} 项必需文件未完成，请优先准备标注为"必需"的文件`;
+  } else if (done < total) {
+    message.textContent = `全部必需文件已准备完毕。另有 ${remaining} 项建议文件可补充完善`;
+  } else {
+    message.textContent = '全部文件已准备完毕，可前往 ImmiAccount 递交签证申请';
+  }
+}
+
+function exportChecklist() {
+  const allDocs = [];
+  Object.entries(documents).forEach(([cat, arr]) => {
+    arr.forEach(d => allDocs.push({ ...d, category: cat }));
+  });
+
+  const lines = ['澳洲学生签证续签 · 材料准备清单', '清单生成时间：' + new Date().toLocaleString('zh-CN'), ''];
+  const catNames = {
+    A: '核心签证文件',
+    B: '身份与关系类文件',
+    C: '资金证明类文件',
+    D: '学业相关文件',
+    E: '其他证明文件'
+  };
+
+  Object.entries(documents).forEach(([cat, arr]) => {
+    lines.push(`【${catNames[cat]}】`);
+    arr.forEach(d => {
+      const status = checkedState[d.id] ? '☑' : '☐';
+      const tags = d.tags.map(t => t.text).join('/');
+      lines.push(`  ${status} ${d.name}  [${tags}]`);
+    });
+    lines.push('');
+  });
+
+  const total = allDocs.length;
+  const done = allDocs.filter(d => checkedState[d.id]).length;
+  lines.push(`材料准备状态：${done} / ${total} 已完成`);
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = '签证材料清单_' + new Date().toISOString().slice(0,10) + '.txt';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function resetAll() {
+  if (!confirm('确认重置全部勾选状态及上传记录？')) return;
+  checkedState = {};
+  uploadedFiles = {};
+  saveState();
+  document.querySelectorAll('.doc-item').forEach(item => {
+    item.classList.remove('checked');
+    item.querySelector('.doc-checkbox').setAttribute('aria-checked', 'false');
+  });
+  document.querySelectorAll('.uploaded-files').forEach(c => c.innerHTML = '');
+  updateProgress();
+}
+
+// 初始化
+loadState();
+renderChecklist();
+applyInitialState();
+updateProgress();
+</script>
+</body>
+</html>
